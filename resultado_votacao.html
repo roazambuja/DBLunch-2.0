@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/resultadoVotacao.css">
     <link rel="stylesheet" href="./CSS/estilos.css">
     <title>DBLunch | Resultado</title>
@@ -12,9 +13,62 @@
     <main class="vencedorVotacao">
         <h1 class="title">Verifique abaixo o resultado da votação!</h1>
         <p class="description">O vencedor é:</p>
-        <script src="JS/jquery.js"></script>
-        <script src="JS/resultado_votacao.js" type="module"></script>
+        <div id="map" style="height: 500px"></div>
     </main>
+
+    <!-- <script>
+
+        var geocoder;
+        var map;
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var mapOptions = {
+                zoom: 8,
+                center: latlng
+            }
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+
+        function codeAddress() {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARXOynsODLGK0Cu8JenFahcCVhHn2247I" async
+        defer></script>
+
+    <body onload="initialize()">
+        <div id="map" style="width: 320px; height: 480px;"></div>
+        <div>
+            <input id="address" type="textbox" value="Sydney, NSW">
+            <input type="button" value="Encode" onclick="codeAddress()">
+        </div>
+    </body>  -->
+    <script src="JS/jquery.js"></script>
+    <script src="JS/resultado_votacao.js" type="module"></script>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -30.058925, lng: -51.1752084 },
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARXOynsODLGK0Cu8JenFahcCVhHn2247I&callback=initMap"
+        async defer></script>
 </body>
 
 </html>
